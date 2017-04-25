@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="charset" content="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Go-Base</title>
+
+      <link rel="stylesheet" type="text/css" href="../static/styles/vendor/semantic.min.css">
+      <link rel="stylesheet" type="text/css" href="../static/styles/app.css">
+
+      <script type="text/javascript" src="../static/scripts/vendor/jquery.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/semantic.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/tablesort.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/zxcvbn.js"></script>
+      <script type="text/javascript" src="../static/scripts/app.js"></script>
+    </head>
+    <body>
+      <nav class="ui navigation grid">
+        <div class="mobile only row">
+          <div class="ui fixed inverted black main menu">
+              <a class="item" href="/">
+                <i class="home icon"></i>
+                Go-Base
+              </a>
+              <a class="item" href="/about">
+                <i class="info icon"></i>
+                About
+              <div class="right menu">
+                  <a class="icon item" id="open-nav">
+                    <i class="sidebar icon"></i>
+                  </a>
+              </div>
+          </div>
+          <div class="ui fixed vertical fluid menu">
+            <a class="item" href="/account/register">
+              <i class="list layout icon"></i>
+              Register
+            </a>
+            {{if .LoggedIn}}
+            <a class="item" href="/account/logout">
+              <i class="sign out icon"></i>
+              Log Out
+            </a>
+            {{else}}
+            <a class="item" href="/account/login">
+              <i class="sign in icon"></i>
+              Log in
+            </a>
+            {{end}}
+          </div>
+          </div>
+        </div>
+
+        <div class="computer tablet only row">
+          <div class="ui fixed inverted black main menu">
+              <div class="ui container">
+                  <a class="item" href="/">
+                    <i class="home icon"></i>
+                    Go-Base
+                  </a>
+                  <a class="item" href="/about">
+                    <i class="info icon"></i>
+                    About
+                  </a>
+                  <div class="right menu">
+                    <a class="item" href="/account/register">
+                      <i class="list layout icon"></i>
+                      Register
+                    </a>
+                    {{if .LoggedIn}}
+                    <a class="item" href="/account/logout">
+                      <i class="sign out icon"></i>
+                      Log Out
+                    </a>
+                    {{else}}
+                    <a class="item" href="/account/login">
+                      <i class="sign in icon"></i>
+                      Log in
+                    </a>
+                    {{end}}
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </nav>
+      <div class="ui text container"></div>
+      <div class="ui text container">
+          <h1>About</h1>
+      </div>
+    </body>
+</html>

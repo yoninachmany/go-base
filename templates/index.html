@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="charset" content="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Go-Base</title>
+
+      <link rel="stylesheet" type="text/css" href="../static/styles/vendor/semantic.min.css">
+      <link rel="stylesheet" type="text/css" href="../static/styles/app.css">
+
+      <script type="text/javascript" src="../static/scripts/vendor/jquery.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/semantic.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/tablesort.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/zxcvbn.js"></script>
+      <script type="text/javascript" src="../static/scripts/app.js"></script>
+    </head>
+    <body>
+      <nav class="ui navigation grid">
+        <div class="mobile only row">
+          <div class="ui fixed inverted black main menu">
+              <a class="item" href="/">
+                <i class="home icon"></i>
+                Go-Base
+              </a>
+              <a class="item" href="/about">
+                <i class="info icon"></i>
+                About
+              <div class="right menu">
+                  <a class="icon item" id="open-nav">
+                    <i class="sidebar icon"></i>
+                  </a>
+              </div>
+          </div>
+          <div class="ui fixed vertical fluid menu">
+            <a class="item" href="/account/register">
+              <i class="list layout icon"></i>
+              Register
+            </a>
+            {{if .LoggedIn}}
+            <a class="item" href="/account/logout">
+              <i class="sign out icon"></i>
+              Log Out
+            </a>
+            {{else}}
+            <a class="item" href="/account/login">
+              <i class="sign in icon"></i>
+              Log in
+            </a>
+            {{end}}
+          </div>
+          </div>
+        </div>
+
+        <div class="computer tablet only row">
+          <div class="ui fixed inverted black main menu">
+              <div class="ui container">
+                  <a class="item" href="/">
+                    <i class="home icon"></i>
+                    Go-Base
+                  </a>
+                  <a class="item" href="/about">
+                    <i class="info icon"></i>
+                    About
+                  </a>
+                  <div class="right menu">
+                    <a class="item" href="/account/register">
+                      <i class="list layout icon"></i>
+                      Register
+                    </a>
+                    {{if .LoggedIn}}
+                    <a class="item" href="/account/logout">
+                      <i class="sign out icon"></i>
+                      Log Out
+                    </a>
+                    {{else}}
+                    <a class="item" href="/account/login">
+                      <i class="sign in icon"></i>
+                      Log in
+                    </a>
+                    {{end}}
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </nav>
+      <div class="ui text container"></div>
+      <div class="ui text container">
+        <h1>Hello,</h1>
+
+        <p>This is <a href="http://hack4impact.org">Hack4Impact</a>'s web application template. We'll use this as a
+        foundation for each of our <a href="http://flask.pocoo.org">Flask</a> projects. The goal is to reduce the work
+        necessary to get a new project off the ground, by providing boilerplate code (such as account management
+        facilities), as well as uncontroversial and extensible defaults. We have integrated an
+        <a href="http://sass-lang.com">SCSS</a>-based asset pipeline based around a (fantastic!) framework
+        called <a href="http://semantic-ui.com">Semantic UI</a>. Much of this code is appropriated from the examples
+        in Miguel Grinberg's book, <a href="http://flaskbook.com"><em>Flask Web Development</em></a>.</p>
+
+        <p>Odio ac quis et eget dapibus, enim fermentum nascetur interdum nullam, fermentum condimentum platea imperdiet, ut id vehicula faucibus sociosqu parturient. Dis nostra sociis elementum ante ridiculus nec, metus sociis morbi curabitur nunc ridiculus, ad libero scelerisque in. Viverra elementum placerat velit parturient praesent, volutpat.</p>
+
+        <p>Diam curae non torquent congue, aptent venenatis praesent aliquam per, hymenaeos consequat imperdiet orci, cras purus parturient vitae, aptent metus leo. Class cum mattis pede neque, eros phasellus.</p>
+
+        <p>Sem mauris semper porttitor auctor a malesuada, sollicitudin elementum leo proin vel tempus, placerat lacus venenatis quam commodo curabitur, diam sociosqu leo. Et tortor massa bibendum neque accumsan, duis velit habitant pretium magna turpis, sit arcu tristique amet faucibus, magna. Sit venenatis sit leo feugiat cum, ad vel cum dolor, sollicitudin at mauris maecenas.</p>
+
+        <p>Euismod etiam interdum massa natoque tempor, litora mauris vivamus id vulputate, cursus fringilla ipsum lacus, consequat ipsum laoreet. Condimentum ut arcu sapien odio consectetuer sociosqu potenti, rhoncus quam massa habitant leo pulvinar conubia, massa eu. Curae venenatis ante vehicula mattis, hymenaeos magna per platea ante lacus facilisi, ultrices suscipit eu posuere, dignissim non dictum scelerisque arcu. Et est aptent lectus mauris, est arcu dapibus viverra, integer taciti convallis gravida accumsan vulputate, sapien lorem integer senectus. Vestibulum consectetuer sollicitudin potenti morbi mi, auctor suspendisse hendrerit quisque risus, libero justo auctor habitasse. Quisque consectetuer aptent odio eleifend volutpat dapibus, per.</p>
+
+        <p>Sit phasellus odio quisque sem justo cras ipsum fringilla, facilisi dapibus rhoncus non, justo condimentum dis ridiculus porttitor, vestibulum. Tempor viverra nascetur nunc cursus dictum, cras vitae dui vestibulum nunc conubia, natoque quisque lacus taciti, imperdiet semper.</p>
+
+        <p>Volutpat pretium velit sit hymenaeos, consectetuer est habitasse donec auctor, donec lorem dis posuere dis, curabitur faucibus morbi nulla dis nibh dui,. Magnis.</p>
+      </div>
+    </body>
+</html>

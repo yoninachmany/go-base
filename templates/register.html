@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="charset" content="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Go-Base</title>
+
+      <link rel="stylesheet" type="text/css" href="../static/styles/vendor/semantic.min.css">
+      <link rel="stylesheet" type="text/css" href="../static/styles/app.css">
+
+      <script type="text/javascript" src="../static/scripts/vendor/jquery.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/semantic.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/tablesort.min.js"></script>
+      <script type="text/javascript" src="../static/scripts/vendor/zxcvbn.js"></script>
+      <script type="text/javascript" src="../static/scripts/app.js"></script>
+    </head>
+    <body>
+      <nav class="ui navigation grid">
+        <div class="mobile only row">
+          <div class="ui fixed inverted black main menu">
+              <a class="item active" href="/">
+                <i class="home icon"></i>
+                Go-Base
+              </a>
+              <a class="item" href="/about">
+                <i class="info icon"></i>
+                About
+              <div class="right menu">
+                  <a class="icon item" id="open-nav">
+                    <i class="sidebar icon"></i>
+                  </a>
+              </div>
+          </div>
+          <div class="ui fixed vertical fluid menu">
+            <a class="item" href="/account/register">
+              <i class="list layout icon"></i>
+              Register
+            </a>
+            {{if .LoggedIn}}
+            <a class="item" href="/account/logout">
+              <i class="sign out icon"></i>
+              Log Out
+            </a>
+            {{else}}
+            <a class="item" href="/account/login">
+              <i class="sign in icon"></i>
+              Log in
+            </a>
+            {{end}}
+          </div>
+          </div>
+        </div>
+
+        <div class="computer tablet only row">
+          <div class="ui fixed inverted black main menu">
+              <div class="ui container">
+                  <a class="item active" href="/">
+                    <i class="home icon"></i>
+                    Go-Base
+                  </a>
+                  <a class="item" href="/about">
+                    <i class="info icon"></i>
+                    About
+                  </a>
+                  <div class="right menu">
+                    <a class="item" href="/account/register">
+                      <i class="list layout icon"></i>
+                      Register
+                    </a>
+                    {{if .LoggedIn}}
+                    <a class="item" href="/account/logout">
+                      <i class="sign out icon"></i>
+                      Log Out
+                    </a>
+                    {{else}}
+                    <a class="item" href="/account/login">
+                      <i class="sign in icon"></i>
+                      Log in
+                    </a>
+                    {{end}}
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </nav>
+      <div class="ui text container"></div>
+      <div class="ui grid container">
+        <div class="eight wide computer sixteen wide mobile centered column">
+            <h2 class="ui dividing header">Create an account</h2>
+            <form action="" method="POST" enctype="" class="ui form">
+              <!-- <div style="display:none;"><input id="csrf_token" name="csrf_token" type="hidden" value="1492999916##89039b32f6a7ca23fdbcbd76c4eee202270f8800"></div> -->
+              <div class="two fields">
+                <div class="field">
+                    <label for="first_name">First name</label>
+                    <input id="first_name" name="first_name" placeholder="First name" type="text" value="">
+                </div>
+                <div class="field">
+                    <label for="last_name">Last name</label>
+                    <input id="last_name" name="last_name" placeholder="Last name" type="text" value="">
+                </div>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" placeholder="Email" type="email" value="">
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label for="password">Password</label>
+                  <input id="password" name="password" placeholder="Password" type="password" value="">
+                </div>
+                <div class="field">
+                  <label for="password2">Confirm password</label>
+                  <input id="password2" name="password2" placeholder="Confirm password" type="password" value="">
+                </div>
+              </div>
+              <div class="field">
+                <input class="ui button" id="submit" name="submit" type="submit" value="Register">
+              </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+    <script>
+      $('#submit').attr('disabled', true);
+      $('#password').after('<progress value="0" max="4" id="password-strength-meter"></progress><p id="password-strength-text"></p>');
+      var strength = {
+        0: "Bad",
+        1: "Okay",
+        2: "Good",
+        3: "Very Good",
+        4: "Strong"
+      }
+      var meter = document.getElementById('password-strength-meter');
+      var text = $('#password-strength-text');
+
+      $('#password').keyup(function() {
+        var result = zxcvbn($(this).val());
+        // Update the password strength meter
+        meter.value = result.score;
+        if(result.score >= 0) {
+          $('#submit').attr('disabled', false);
+        } else {
+          $('#submit').attr('disabled', true);
+        }
+        // Update the text indicator
+        if ($(this).val() !== "") {
+          $(text).html("Strength: " + strength[result.score]);
+        } else {
+          $(text).html("");
+        }
+      });
+    </script>
+    <style>
+      progress {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+
+        margin: 10 auto 1em;
+        width: 100%;
+        height: 0.5em;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      /* Chrome */
+      progress::-webkit-progress-value {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+       /* Webkit based browsers */
+      progress[value^="1"]::-webkit-progress-value { background-color: red; }
+      progress[value^="2"]::-webkit-progress-value { background-color: yellow; }
+      progress[value^="3"]::-webkit-progress-value { background-color: orange; }
+      progress[value^="4"]::-webkit-progress-value { background-color: green; }
+
+
+      /* Gecko based browsers */
+      progress[value^="1"]::-moz-progress-bar { background-color: red; }
+      progress[value^="2"]::-moz-progress-bar { background-color: yellow; }
+      progress[value^="3"]::-moz-progress-bar { background-color: orange; }
+      progress[value^="4"]::-moz-progress-bar { background-color: green; }
+    </style>
+    <div style="visibility: hidden; display: none">
+      <!-- <input type="hidden" name="csrf_token" value="1492999916##89039b32f6a7ca23fdbcbd76c4eee202270f8800"> -->
+    </div>
+  </body>
+</html>
